@@ -30,6 +30,6 @@ func main() {
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(innovation_project_gen))
 	})
-	http.ListenAndServe(os.Getenv("PATH"), r)
+	http.ListenAndServe("0.0.0.0"+os.Getenv("PATH"), r)
 
 }
