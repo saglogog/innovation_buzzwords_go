@@ -5,11 +5,12 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
 	"net/http"
+	"os"
+	"time"
+
 	"github.com/go-chi/chi"
 )
-
 
 func main() {
 	adverb := [32]string{"appropriately", "assertively", "authoritatively", "coherently", "collaboratively", "compellingly", "competently", "completely", "continually", "conveniently", "credibly", "distinctively", "dynamically", "efficiently", "enthusiastically", "globally", "holistically", "hypothetically", "interactively", "intrinsically", "locally", "meaningfully", "monotonically", "objectively", "proactively", "professionally", "progressively", "rapidly", "seamlessly", "synergistically", "totally", "uniquely"}
@@ -25,10 +26,10 @@ func main() {
 	innovation_project_gen := fmt.Sprint(adverb[rand.Intn(len(adverb))], " ", verb[rand.Intn(len(verb))], " ", adjective[rand.Intn(len(adjective))], " ", noun[rand.Intn(len(noun))])
 	// fmt.Println(innovation_project_gen)
 
-
 	r := chi.NewRouter()
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(innovation_project_gen))
 	})
-	http.ListenAndServe(os.Getenv("PORT"), r)
+	http.ListenAndServe(os.Getenv("PATH"), r)
+
 }
