@@ -30,5 +30,5 @@ func main() {
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(innovation_project_gen))
 	})
-	http.ListenAndServe(":3000", r)
+	http.ListenAndServe(os.Getenv("NAME"), r)
 }
