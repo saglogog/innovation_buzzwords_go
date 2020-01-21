@@ -5,6 +5,7 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"math/rand"
 	"net/http"
 	"os"
@@ -31,7 +32,7 @@ func main() {
 	http.HandleFunc("/", innoViewHandler)
 	// log.Fatal(http.ListenAndServe("0.0.0.0:"+"3000", nil))
 	// https://stackoverflow.com/questions/36751071/heroku-web-process-failed-to-bind-to-port-within-90-seconds-of-launch-tootall
-	http.ListenAndServe("0.0.0.0"+os.Getenv("PORT"), nil)
+	log.Fatal(http.ListenAndServe("0.0.0.0"+os.Getenv("PORT"), nil))
 }
 
 func randomize_quote() string {
