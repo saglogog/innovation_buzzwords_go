@@ -5,9 +5,9 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"log"
 	"math/rand"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -29,9 +29,9 @@ func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	// http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 	http.HandleFunc("/", innoViewHandler)
-	log.Fatal(http.ListenAndServe("0.0.0.0:"+"3000", nil))
+	// log.Fatal(http.ListenAndServe("0.0.0.0:"+"3000", nil))
 	// https://stackoverflow.com/questions/36751071/heroku-web-process-failed-to-bind-to-port-within-90-seconds-of-launch-tootall
-	// http.ListenAndServe("0.0.0.0:"+os.Getenv("PORT"), r)
+	http.ListenAndServe("0.0.0.0"+os.Getenv("PORT"), nil)
 }
 
 func randomize_quote() string {
